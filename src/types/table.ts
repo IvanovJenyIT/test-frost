@@ -22,6 +22,15 @@ export interface IDeformationControl {
   criticalDelta: number;
 }
 
+export interface Root {
+  id: string;
+  objectId: string;
+  points: Points;
+  startDate: string;
+  endDate: string;
+  criticalEndDate: string;
+}
+
 interface DataThermistorChain {
   [key: string]: NValue;
 }
@@ -35,4 +44,8 @@ interface DataDeformationControl {
   value: number;
   isValid: boolean;
   delta?: number;
+}
+
+interface Points {
+  [date: string]: number;
 }

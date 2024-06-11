@@ -3,13 +3,13 @@ import { Button, Form, Toast } from 'react-bootstrap';
 import DateModal from './DateModal';
 
 interface IProps<T> {
-  setData: Dispatch<SetStateAction<T>>;
-  dataFetched: T | undefined;
+  setData: Dispatch<SetStateAction<T[]>>;
+  dataFetched: T[] | undefined;
 }
 
 type DateType = 'start' | 'end' | null;
 
-function DateFilter<T extends Array<any>>({ setData, dataFetched }: IProps<T>) {
+function DateFilter<T>({ setData, dataFetched }: IProps<T>) {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [currentDateType, setCurrentDateType] = useState<DateType>(null);
@@ -32,7 +32,7 @@ function DateFilter<T extends Array<any>>({ setData, dataFetched }: IProps<T>) {
         return itemDate >= startDate && itemDate <= endDate;
       });
 
-      setData(filteredData as T);
+      setData(filteredData as T[]);
     } else {
       setToastMessage('Начальная или конечная дата не выбрана');
       setShowToast(true);

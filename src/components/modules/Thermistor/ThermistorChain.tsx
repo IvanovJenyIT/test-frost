@@ -5,7 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import { createColumnHelper, ColumnDef } from '@tanstack/react-table';
 import { useEffect, useState } from 'react';
-import DateFilter from '../DataPicker/DateFilter';
+import DateFilter from '../DataFilter/DateFilter';
 import Table from '../Table/Table';
 
 const columnHelper = createColumnHelper<IThermistorChain>();
@@ -98,7 +98,7 @@ function ThermistorChain() {
         <div className="p-2">
           <h1 className="text-4xl">Термокоса</h1>
 
-          <DateFilter<IThermistorChain[]>
+          <DateFilter<IThermistorChain>
             setData={setData}
             dataFetched={dataFetched}
           />

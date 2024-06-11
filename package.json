@@ -17,10 +17,12 @@
     "bootstrap": "^5.3.3",
     "date-fns": "^3.6.0",
     "json-server": "^1.0.0-beta.1",
+    "plotly.js": "^2.33.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-date-range": "^2.0.1",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-plotly.js": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.0.3",
@@ -32,6 +34,7 @@
     "@types/react": "^18.3.3",
     "@types/react-date-range": "^1.4.9",
     "@types/react-dom": "^18.3.0",
+    "@types/react-plotly.js": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",

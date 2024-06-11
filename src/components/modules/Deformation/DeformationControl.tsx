@@ -2,11 +2,13 @@ import Spinner from 'react-bootstrap/Spinner';
 import { DEFORMATION } from '../../../constants/constants';
 import { useData } from '../../../hooks/useData';
 import { IDeformationControl } from '../../../types/table';
+import { Button } from 'react-bootstrap';
 
 import { ColumnDef } from '@tanstack/react-table';
 import { useEffect, useState } from 'react';
-import DateFilter from '../DataPicker/DateFilter';
+import DateFilter from '../DataFilter/DateFilter';
 import Table from '../Table/Table';
+import DeformationChart from '../Charts/DeformationChart';
 
 const defaultColumns: ColumnDef<IDeformationControl>[] = [
   {
@@ -70,10 +72,10 @@ function DeformationControl() {
     isSuccess,
   } = useData<IDeformationControl[]>(DEFORMATION);
 
-  console.log('qwe', dataFetched);
-
   const [data, setData] = useState<IDeformationControl[]>([]);
   const [columns] = useState(() => [...defaultColumns]);
+
+  const [showChart, setShowChart] = useState(false);
 
   useEffect(() => {
     if (dataFetched) setData(dataFetched);
@@ -84,9 +86,9 @@ function DeformationControl() {
       {isLoading && <Spinner animation="border" variant="primary" />}
       {isSuccess && (
         <div className="p-2">
-          <h1 className="text-4xl">Термокоса</h1>
+          <h1 className="text-4xl">Деформационная марка</h1>
 
-          <DateFilter<IDeformationControl[]>
+          <DateFilter<IDeformationControl>
             setData={setData}
             dataFetched={dataFetched}
           />
@@ -94,6 +96,16 @@ function DeformationControl() {
           <Table columns={columns} data={data} />
         </div>
       )}
+
+      <Button
+        variant="primary"
+        onClick={() => setShowChart(!showChart)}
+        className="my-2"
+      >
+        {showChart ? 'Скрыть график' : 'Показать график'}
+      </Button>
+
+      {showChart && <DeformationChart deformationControlData={dataFetched} />}
     </>
   );
 }
